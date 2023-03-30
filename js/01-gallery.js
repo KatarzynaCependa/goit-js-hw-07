@@ -23,11 +23,14 @@ for (const item of galleryItems) {
 
 galleryEl.addEventListener("click", (event) => {
   event.preventDefault();
-  console.log(event.target.dataset.source);
-  galleryEl.onclick = () => {
-    const instance = basicLightbox.create(
-      `<img src="${event.target.dataset.source}">`
-    );
-    instance.show();
-  };
+  const instance = basicLightbox.create(
+    `<img src="${event.target.dataset.source}">`
+  );
+  instance.show();
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      instance.close();
+    }
+  });
 });

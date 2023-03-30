@@ -21,14 +21,12 @@ for (const item of galleryItems) {
   );
 }
 
-// galleryEl.addEventListener("click", (event) => {
-//   event.preventDefault();
-// });
-
-// galleryEl.onclick = () => {
-//   basicLightbox
-//     .create(
-//       `<img width="1400" height="900" src="https://placehold.it/1400x900">`
-//     )
-//     .show();
-// };
+galleryEl.addEventListener("click", (event) => {
+  event.preventDefault();
+  galleryEl.onclick = () => {
+    const instance = basicLightbox.create(
+      `<img src="${event.target.dataset.source}">`
+    );
+    instance.show();
+  };
+});
